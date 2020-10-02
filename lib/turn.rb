@@ -13,19 +13,16 @@ end
 
 def move(board, index, value = "X")
   board[index] = value
-  return board
+  board
 end
 
 def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " " || board[index] == "")
+  #!(board[index].nil? || board[index] == " " || board[index] == "")
+  (board[index]== "X" || board[index]== "O")
 end
 
 def valid_move?(board, index)
-  if index.between?(0,8) && !position_taken?(board, index)
-    return true
-  else
-    return false
-  end
+  index.between?(0,8) && !position_taken?(board, index)
 end
 
 def turn(board)
@@ -36,7 +33,7 @@ def turn(board)
     move(board,index)
     puts display_board(board)
 
-  else 
+  else
     puts "Please enter 1-9:"
     input= gets.strip
 
